@@ -1,0 +1,167 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6bx5mo8uxln6"]
+
+[ext_resource type="Script" uid="uid://b6lttienq28bi" path="res://scenes/main/main.gd" id="1_iuonh"]
+[ext_resource type="Texture2D" uid="uid://8rdaj11hnhm0" path="res://assets/images/UI_Flat_IconPlay01b.png" id="3_hujxm"]
+[ext_resource type="Texture2D" uid="uid://dt1k3ydof6ura" path="res://assets/images/UI_Flat_FrameSlot01a.png" id="3_l3cfh"]
+[ext_resource type="Texture2D" uid="uid://b23sivlxrdqt1" path="res://assets/images/UI_Flat_FrameSlot03a.png" id="4_6q06x"]
+[ext_resource type="Texture2D" uid="uid://cf0qeo4gq8akp" path="res://assets/images/original_downscaled_96x96_12p5pct.png" id="4_yyfjg"]
+[ext_resource type="Script" uid="uid://lksf5qdv3xn8" path="res://scenes/main/settings_button.gd" id="5_6q06x"]
+[ext_resource type="FontFile" uid="uid://fs2t6hm534ot" path="res://assets/fonts/JetBrainsMono-VariableFont_wght.ttf" id="6_ow5a4"]
+
+[node name="Main" type="Control" node_paths=PackedStringArray("left_button", "icon", "title", "description", "right_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iuonh")
+left_button = NodePath("MC/TerminalWindow/VBox/HC/LeftButton")
+icon = NodePath("MC/TerminalWindow/VBox/HC/TextureRect")
+title = NodePath("MC/TerminalWindow/VBox/HC/TextureRect/Title")
+description = NodePath("MC/TerminalWindow/VBox/HC/TextureRect/Description")
+right_button = NodePath("MC/TerminalWindow/VBox/HC/RightButton")
+
+[node name="Window" type="Window" parent="."]
+oversampling_override = 1.0
+title = "Settings"
+initial_position = 2
+visible = false
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TerminalWindow" type="ScrollContainer" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBox" type="VBoxContainer" parent="MC/TerminalWindow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="GameTitle" type="RichTextLabel" parent="MC/TerminalWindow/VBox"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_ow5a4")
+theme_override_fonts/mono_font = ExtResource("6_ow5a4")
+theme_override_font_sizes/mono_font_size = 16
+bbcode_enabled = true
+text = "-------------------------------------------------------
+ _      _               _______          _             
+| |    (_)             |__   __|        (_)            
+| |     _ _ __  _   ___  _| |_   _ _ __  _ _ __   __ _ 
+| |    | | '_ \\| | | \\ \\/ / | | | | '_ \\| | '_ \\ / _` |
+| |____| | | | | |_| |>  <| | |_| | |_) | | | | | (_| |
+|______|_|_| |_|\\__,_/_/\\_\\_|\\__, | .__/|_|_| |_|\\__, |
+                              __/ | |             __/ |
+                             |___/|_|            |___/ 
+-------------------------------------------------------
+(c) 2025 ms21826
+
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 1
+tab_size = 2
+horizontal_alignment = 1
+
+[node name="HC" type="HBoxContainer" parent="MC/TerminalWindow/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="LeftButton" type="TextureButton" parent="MC/TerminalWindow/VBox/HC"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("3_hujxm")
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="MC/TerminalWindow/VBox/HC"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("4_yyfjg")
+stretch_mode = 2
+
+[node name="Title" type="Label" parent="MC/TerminalWindow/VBox/HC/TextureRect"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "1-1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="MC/TerminalWindow/VBox/HC/TextureRect"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1-1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightButton" type="TextureButton" parent="MC/TerminalWindow/VBox/HC"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_hujxm")
+
+[node name="HC2" type="HBoxContainer" parent="MC/TerminalWindow/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MC/TerminalWindow/VBox/HC2"]
+layout_mode = 2
+text = "Press Enter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HC3" type="HBoxContainer" parent="MC/TerminalWindow/VBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 8
+
+[node name="TextureButton" type="TextureButton" parent="MC/TerminalWindow/VBox/HC3" node_paths=PackedStringArray("win")]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("3_l3cfh")
+texture_hover = ExtResource("4_6q06x")
+script = ExtResource("5_6q06x")
+win = NodePath("../../../../../Window")
+
+[node name="TextureButton2" type="TextureButton" parent="MC/TerminalWindow/VBox/HC3"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("3_l3cfh")
+texture_hover = ExtResource("4_6q06x")

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://xhytgpr8gp7c"]
+
+[ext_resource type="FontFile" uid="uid://mutqsmskjye2" path="res://assets/fonts/Rektec.otf" id="1_d8a0y"]
+
+[resource]
+default_font = ExtResource("1_d8a0y")
+default_font_size = 12

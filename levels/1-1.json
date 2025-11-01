@@ -1,0 +1,40 @@
+{
+	"title": "1-1",
+	"description": "Tutorial level",
+	"settings": {
+		"expire": 10.0,
+		"randomize": false
+	},
+	"lines": [
+		{
+			"prompt": "$",
+			"input": "uname -n",
+			"output": "LinuxServer"
+		},
+		{
+			"prompt": "$",
+			"input": "whoami",
+			"output": "operator"
+		},
+		{
+			"prompt": "$",
+			"input": "sudo su -",
+			"output": ""
+		},
+		{
+			"prompt": "#",
+			"input": "echo Hello; echo $?",
+			"output": "Hello\n0"
+		},
+		{
+			"prompt": "#",
+			"input": "exit",
+			"output": ""
+		},
+		{
+			"prompt": "$",
+			"input": "exit",
+			"output": ""
+		}
+	]
+}

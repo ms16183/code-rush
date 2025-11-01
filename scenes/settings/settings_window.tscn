@@ -1,0 +1,118 @@
+[gd_scene load_steps=5 format=3 uid="uid://djdi2kukr5p07"]
+
+[ext_resource type="Script" uid="uid://cj7c3qnasl55u" path="res://scenes/settings/settings_window.gd" id="1_jqdus"]
+[ext_resource type="Texture2D" uid="uid://dl8qiyg46dqcf" path="res://assets/images/icon_minus.png" id="2_pr567"]
+[ext_resource type="PackedScene" uid="uid://b26cxd7h833hr" path="res://scenes/line/line.tscn" id="3_jqdus"]
+[ext_resource type="Texture2D" uid="uid://tlhsy0uwapt6" path="res://assets/images/icon_plus.png" id="3_lxbbw"]
+
+[node name="Window" type="Window" node_paths=PackedStringArray("char_small_button", "char_medium_button", "volume_slider", "exit_button")]
+transparent_bg = true
+oversampling_override = 1.0
+title = "Settings"
+initial_position = 2
+size = Vector2i(320, 240)
+exclusive = true
+unresizable = true
+borderless = true
+transparent = true
+script = ExtResource("1_jqdus")
+char_small_button = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer2/CharSmallButton")
+char_medium_button = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer2/CharMediumButon")
+volume_slider = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/VolumeSlider")
+exit_button = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer3/ExitButton")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12941177, 0.14901961, 0.18039216, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "音量を調整します。"
+theme_override_constants/separation = 32
+
+[node name="VolumeLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "SE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+step = 10.0
+value = 80.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "ターミナルの文字サイズを変更します。"
+theme_override_constants/separation = 32
+
+[node name="CharSizeLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Size"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharSmallButton" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("2_pr567")
+
+[node name="CharMediumButon" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_lxbbw")
+
+[node name="Line" parent="Control/MarginContainer/VBoxContainer" instance=ExtResource("3_jqdus")]
+layout_mode = 2
+text = "Preview 123!@#"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+tooltip_text = "設定を終了します。"
+theme_override_constants/separation = 32
+
+[node name="ExitButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Exit"

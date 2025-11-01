@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx26638xs5206"]
+
+[ext_resource type="Script" uid="uid://cb0kml8qbrnjt" path="res://scenes/result/result.gd" id="1_710hh"]
+[ext_resource type="StyleBox" uid="uid://eikk8cuqnx34" path="res://assets/theme/window_sbt.stylebox" id="2_efjyw"]
+[ext_resource type="Theme" uid="uid://nvxdixr5t7g7" path="res://assets/theme/text.tres" id="4_efjyw"]
+
+[node name="Result" type="Control" node_paths=PackedStringArray("score_label", "combo_label", "speed_label", "class_label", "back_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_710hh")
+score_label = NodePath("Frame/MC/VBox/VBox2/ScoreLabel")
+combo_label = NodePath("Frame/MC/VBox/VBox2/ComboLabel")
+speed_label = NodePath("Frame/MC/VBox/VBox2/SpeedLabel")
+class_label = NodePath("Frame/MC/VBox/VBox/ClassLabel")
+back_button = NodePath("Frame/MC/VBox/VBox3/PlayButton")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+
+[node name="Frame" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 896.0
+offset_bottom = 608.0
+theme_override_styles/panel = ExtResource("2_efjyw")
+
+[node name="MC" type="MarginContainer" parent="Frame"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 32
+
+[node name="VBox" type="VBoxContainer" parent="Frame/MC"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBox" type="VBoxContainer" parent="Frame/MC/VBox"]
+layout_mode = 2
+
+[node name="ClassLabel" type="Label" parent="Frame/MC/VBox/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_efjyw")
+theme_override_font_sizes/font_size = 164
+text = "CLASS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBox2" type="VBoxContainer" parent="Frame/MC/VBox"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ScoreLabel" type="Label" parent="Frame/MC/VBox/VBox2"]
+layout_mode = 2
+theme = ExtResource("4_efjyw")
+theme_override_font_sizes/font_size = 32
+text = "result"
+
+[node name="ComboLabel" type="Label" parent="Frame/MC/VBox/VBox2"]
+layout_mode = 2
+theme = ExtResource("4_efjyw")
+theme_override_font_sizes/font_size = 32
+text = "result"
+
+[node name="SpeedLabel" type="Label" parent="Frame/MC/VBox/VBox2"]
+layout_mode = 2
+theme = ExtResource("4_efjyw")
+theme_override_font_sizes/font_size = 32
+text = "result"
+
+[node name="VBox3" type="VBoxContainer" parent="Frame/MC/VBox"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="PlayButton" type="Button" parent="Frame/MC/VBox/VBox3"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("4_efjyw")
+theme_override_font_sizes/font_size = 22
+text = "EXIT"

@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://csru2ihxlkgw7"]
+
+[ext_resource type="FontFile" uid="uid://c44iwbvnbjn68" path="res://assets/fonts/origa___.ttf" id="1_pk1ul"]
+
+[resource]
+font = ExtResource("1_pk1ul")
+font_size = 22

@@ -1,0 +1,245 @@
+[gd_scene load_steps=15 format=3 uid="uid://cuva7bkfacp5d"]
+
+[ext_resource type="Script" uid="uid://c4bjinga833rh" path="res://scenes/game/game.gd" id="1_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://b26cxd7h833hr" path="res://scenes/line/line.tscn" id="2_0sr1o"]
+[ext_resource type="LabelSettings" uid="uid://csru2ihxlkgw7" path="res://assets/theme/label.tres" id="3_kelw5"]
+[ext_resource type="Theme" uid="uid://bhjytml3sw14p" path="res://assets/theme/line.tres" id="3_lfrn8"]
+[ext_resource type="Theme" uid="uid://xhytgpr8gp7c" path="res://assets/theme/title.tres" id="7_87uf6"]
+[ext_resource type="StyleBox" uid="uid://eikk8cuqnx34" path="res://assets/theme/window_sbt.stylebox" id="7_bdhmt"]
+
+[sub_resource type="Animation" id="Animation_bdhmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MC:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MC:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5i0tg"]
+resource_name = "shake"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MC:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, -0.667), Vector2(0.667, -1.667), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("MC:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.00174532925199472, -0.00174532925199472, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87uf6"]
+_data = {
+&"RESET": SubResource("Animation_bdhmt"),
+&"shake": SubResource("Animation_5i0tg")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5i0tg"]
+
+[sub_resource type="Gradient" id="Gradient_5i0tg"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bdhmt"]
+gradient = SubResource("Gradient_5i0tg")
+fill_from = Vector2(1, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_5i0tg"]
+color = Color(0, 1, 0, 0)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 24
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_bdhmt"]
+color = Color(0, 1, 0, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 24
+vertical = true
+
+[node name="Game" type="Control" node_paths=PackedStringArray("shake_animation", "scroll", "vbox", "expire_bar", "title_label", "score_label", "combo_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0sr1o")
+shake_animation = NodePath("MC/AnimationPlayer")
+scroll = NodePath("MC/HBoxContainer/PanelContainer/MC/TerminalWindow")
+vbox = NodePath("MC/HBoxContainer/PanelContainer/MC/TerminalWindow/VBox")
+expire_bar = NodePath("MC/HBoxContainer/VBoxContainer/PanelContainer2/MC/Expire")
+title_label = NodePath("MC/HBoxContainer/VBoxContainer/PanelContainer/MC/VBoxContainer/TitleLabel")
+score_label = NodePath("MC/HBoxContainer/VBoxContainer/PanelContainer/MC/VBoxContainer/ScoreLabel")
+combo_label = NodePath("MC/HBoxContainer/VBoxContainer/PanelContainer/MC/VBoxContainer/ComboLabel")
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MC"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_87uf6")
+}
+autoplay = "shake"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MC"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MC/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("7_bdhmt")
+
+[node name="MC" type="MarginContainer" parent="MC/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = -12
+
+[node name="TerminalWindow" type="ScrollContainer" parent="MC/HBoxContainer/PanelContainer/MC"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBox" type="VBoxContainer" parent="MC/HBoxContainer/PanelContainer/MC/TerminalWindow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Line" parent="MC/HBoxContainer/PanelContainer/MC/TerminalWindow/VBox" instance=ExtResource("2_0sr1o")]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="MC/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_bdhmt")
+
+[node name="MC" type="MarginContainer" parent="MC/HBoxContainer/VBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = -12
+theme_override_constants/margin_bottom = 8
+
+[node name="GameTitle" type="RichTextLabel" parent="MC/HBoxContainer/VBoxContainer/PanelContainer3/MC"]
+layout_mode = 2
+theme = ExtResource("7_87uf6")
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "CODE
+RUSH"
+fit_content = true
+scroll_active = false
+autowrap_mode = 1
+tab_size = 2
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MC/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_bdhmt")
+
+[node name="MC" type="MarginContainer" parent="MC/HBoxContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC/HBoxContainer/VBoxContainer/PanelContainer/MC"]
+material = SubResource("CanvasItemMaterial_5i0tg")
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="MC/HBoxContainer/VBoxContainer/PanelContainer/MC/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_lfrn8")
+text = "TITLE: 000"
+label_settings = ExtResource("3_kelw5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MC/HBoxContainer/VBoxContainer/PanelContainer/MC/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SCORE: 000"
+label_settings = ExtResource("3_kelw5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComboLabel" type="Label" parent="MC/HBoxContainer/VBoxContainer/PanelContainer/MC/VBoxContainer"]
+layout_mode = 2
+text = "COMBO: 000"
+label_settings = ExtResource("3_kelw5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="MC/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("7_bdhmt")
+
+[node name="MC" type="MarginContainer" parent="MC/HBoxContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = -12
+theme_override_constants/margin_bottom = 8
+
+[node name="Expire" type="VSlider" parent="MC/HBoxContainer/VBoxContainer/PanelContainer2/MC"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_icons/grabber_disabled = SubResource("GradientTexture2D_bdhmt")
+theme_override_styles/slider = SubResource("StyleBoxLine_5i0tg")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_bdhmt")
+value = 100.0
+editable = false
+scrollable = false

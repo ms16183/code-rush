@@ -1,0 +1,60 @@
+{
+  "title": "1-2",
+  "description": "PostgreSQL version checks",
+  "settings": {
+    "expire": 90.0,
+    "randomize": true
+  },
+  "lines": [
+    {
+      "prompt": "$",
+      "input": "psql --version",
+      "output": "psql (PostgreSQL) 15.6 (Ubuntu 15.6-0ubuntu0.23.04.1)"
+    },
+    {
+      "prompt": "$",
+      "input": "postgres -V",
+      "output": "postgres (PostgreSQL) 15.6"
+    },
+    {
+      "prompt": "$",
+      "input": "pg_config --version",
+      "output": "PostgreSQL 15.6"
+    },
+    {
+      "prompt": "$",
+      "input": "sudo -u postgres psql -c \"SELECT version();\"",
+      "output": "                                                     version\n-------------------------------------------------------------------------------------------------------------\n PostgreSQL 15.6 (Ubuntu 15.6-0ubuntu0.23.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~23.04) 11.4.0, 64-bit\n(1 row)"
+    },
+    {
+      "prompt": "$",
+      "input": "sudo -u postgres psql -c \"SHOW server_version;\"",
+      "output": " server_version\n---------------\n15.6\n(1 row)"
+    },
+    {
+      "prompt": "$",
+      "input": "sudo -u postgres psql -tAc \"SHOW server_version_num;\"",
+      "output": "150006"
+    },
+    {
+      "prompt": "$",
+      "input": "sudo -u postgres psql -c \"SELECT current_setting('server_version');\"",
+      "output": " current_setting\n----------------\n15.6\n(1 row)"
+    },
+    {
+      "prompt": "$",
+      "input": "sudo -u postgres psql -c \"SELECT setting FROM pg_settings WHERE name = 'server_version';\"",
+      "output": " setting\n---------\n15.6\n(1 row)"
+    },
+    {
+      "prompt": "$",
+      "input": "dpkg -l | grep postgresql-15",
+      "output": "ii  postgresql-15  15.6-0ubuntu0.23.04.1  amd64  The World's Most Advanced Open Source Relational Database"
+    },
+    {
+      "prompt": "$",
+      "input": "ls /usr/lib/postgresql",
+      "output": "15"
+    }
+  ]
+}

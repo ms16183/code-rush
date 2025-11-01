@@ -1,0 +1,60 @@
+{
+  "title": "1-4",
+  "description": "Linux command lv2",
+  "settings": {
+    "expire": 75.0,
+    "randomize": true
+  },
+  "lines": [
+    {
+      "prompt": "$",
+      "input": "cat /etc/os-release",
+      "output": "NAME=\"Ubuntu\"\nVERSION=\"22.04.3 LTS (Jammy Jellyfish)\"\nID=ubuntu\nID_LIKE=debian\nPRETTY_NAME=\"Ubuntu 22.04.3 LTS\"\nVERSION_ID=\"22.04\""
+    },
+    {
+      "prompt": "$",
+      "input": "hostname",
+      "output": "nebula"
+    },
+    {
+      "prompt": "$",
+      "input": "whoami",
+      "output": "analyst"
+    },
+    {
+      "prompt": "$",
+      "input": "pwd",
+      "output": "/home/analyst"
+    },
+    {
+      "prompt": "$",
+      "input": "ls -1",
+      "output": "bin\nDocuments\nnotes.txt\nscripts"
+    },
+    {
+      "prompt": "$",
+      "input": "grep -n TODO notes.txt",
+      "output": "12:TODO: clean up scripts"
+    },
+    {
+      "prompt": "$",
+      "input": "df -h /",
+      "output": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       100G   45G   51G  47% /"
+    },
+    {
+      "prompt": "$",
+      "input": "ip -br address show",
+      "output": "lo               UNKNOWN        127.0.0.1/8 ::1/128\neth0             UP             192.168.1.42/24 fe80::a00:27ff:fe4e:66a1/64"
+    },
+    {
+      "prompt": "$",
+      "input": "systemctl is-active ssh",
+      "output": "active"
+    },
+    {
+      "prompt": "$",
+      "input": "tail -n 3 /var/log/auth.log",
+      "output": "May 14 08:42:17 nebula sshd[2214]: Accepted password for analyst from 192.168.1.55 port 51234 ssh2\nMay 14 08:42:17 nebula sshd[2214]: pam_unix(sshd:session): session opened for user analyst(uid=1001) by (uid=0)\nMay 14 08:45:03 nebula sudo[2351]:   analyst : TTY=pts/1 ; PWD=/home/analyst ; USER=root ; COMMAND=/usr/bin/apt update"
+    }
+  ]
+}

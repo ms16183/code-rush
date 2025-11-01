@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://nvxdixr5t7g7"]
+
+[ext_resource type="FontFile" uid="uid://c44iwbvnbjn68" path="res://assets/fonts/origa___.ttf" id="1_0j404"]
+
+[resource]
+default_font = ExtResource("1_0j404")
+default_font_size = 12

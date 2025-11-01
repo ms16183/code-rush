@@ -1,0 +1,60 @@
+{
+	"title": "1-3",
+	"description": "Linux command lv1",
+	"settings": {
+		"expire": 60.0,
+		"randomize": true
+	},
+	"lines": [
+		{
+			"prompt": "$",
+			"input": "cat /etc/redhat-release",
+			"output": "Red Hat Linux release 7.3 (Valhalla)"
+		},
+		{
+			"prompt": "$",
+			"input": "whoami",
+			"output": "operator"
+		},
+		{
+			"prompt": "$",
+			"input": "pwd",
+			"output": "/home/operator"
+		},
+		{
+			"prompt": "$",
+			"input": "cp memo.txt /tmp",
+			"output": ""
+		},
+		{
+			"prompt": "$",
+			"input": "echo hello",
+			"output": "hello"
+		},
+		{
+			"prompt": "$",
+			"input": "uname -n",
+			"output": "Winston"
+		},
+		{
+			"prompt": "$",
+			"input": "type ls",
+			"output": "ls is aliased to `ls --color=auto`"
+		},
+		{
+			"prompt": "$",
+			"input": "mktemp -d",
+			"output": ""
+		},
+		{
+			"prompt": "$",
+			"input": "ps a",
+			"output": "
+PID TTY     TIME COMMAND
+12419 pts/2  00:01 su
+12422 pts/2  00:02 bash
+12511 pts/2  00:00 grep
+12527 pts/3  00:00 ps"
+		}
+	]
+}

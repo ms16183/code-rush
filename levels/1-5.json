@@ -1,0 +1,160 @@
+{
+  "title": "1-5",
+  "description": "Linux command lv3",
+  "settings": {
+    "expire": 90.0,
+    "randomize": true
+  },
+  "lines": [
+    {
+      "prompt": "$",
+      "input": "date",
+      "output": "Tue May 14 09:12:03 UTC 2025"
+    },
+    {
+      "prompt": "$",
+      "input": "uptime",
+      "output": " 09:12:03 up 12 days,  3 users,  load average: 0.48, 0.52, 0.47"
+    },
+    {
+      "prompt": "$",
+      "input": "uname -r",
+      "output": "5.15.0-89-generic"
+    },
+    {
+      "prompt": "$",
+      "input": "uname -m",
+      "output": "x86_64"
+    },
+    {
+      "prompt": "$",
+      "input": "hostname",
+      "output": "nebula"
+    },
+    {
+      "prompt": "$",
+      "input": "whoami",
+      "output": "analyst"
+    },
+    {
+      "prompt": "$",
+      "input": "id",
+      "output": "uid=1001(analyst) gid=1001(analyst) groups=1001(analyst),27(sudo)"
+    },
+    {
+      "prompt": "$",
+      "input": "pwd",
+      "output": "/home/analyst"
+    },
+    {
+      "prompt": "$",
+      "input": "ls -1",
+      "output": "bin\nDocuments\nDownloads\nnotes.txt\nscripts"
+    },
+    {
+      "prompt": "$",
+      "input": "ls -al",
+      "output": "total 36\ndrwxr-xr-x 8 analyst analyst 4096 May 14 08:55 .\ndrwxr-xr-x 6 root    root    4096 May 12 14:20 ..\n-rw-r--r-- 1 analyst analyst  220 May 10 09:41 .bash_logout\n-rw-r--r-- 1 analyst analyst 3526 May 10 09:41 .bashrc\ndrwx------ 3 analyst analyst 4096 May 14 08:57 .cache\n-rw-r--r-- 1 analyst analyst  807 May 10 09:41 .profile"
+    },
+    {
+      "prompt": "$",
+      "input": "du -sh scripts",
+      "output": "12K\tscripts"
+    },
+    {
+      "prompt": "$",
+      "input": "cat notes.txt",
+      "output": "Project roadmap\n- audit monitoring\n- TODO update deployment docs"
+    },
+    {
+      "prompt": "$",
+      "input": "grep -n TODO notes.txt",
+      "output": "3:- TODO update deployment docs"
+    },
+    {
+      "prompt": "$",
+      "input": "wc -l scripts/backup.sh",
+      "output": "42 scripts/backup.sh"
+    },
+    {
+      "prompt": "$",
+      "input": "head -n 3 scripts/backup.sh",
+      "output": "#!/usr/bin/env bash\nset -euo pipefail\nBACKUP_DIR=/mnt/backups"
+    },
+    {
+      "prompt": "$",
+      "input": "tail -n 2 /var/log/syslog",
+      "output": "May 14 09:05:11 nebula systemd[1]: Finished Daily apt download activities.\nMay 14 09:07:44 nebula systemd[1]: Starting Cleanup of Temporary Directories..."
+    },
+    {
+      "prompt": "$",
+      "input": "df -h /",
+      "output": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       100G   45G   51G  47% /"
+    },
+    {
+      "prompt": "$",
+      "input": "lsblk",
+      "output": "NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT\nsda      8:0    0 100G  0 disk \n|-sda1   8:1    0  96G  0 part /\n\\-sda2   8:2    0   4G  0 part [SWAP]\nloop0    7:0    0  55M  1 loop /snap/core20/1974"
+    },
+    {
+      "prompt": "$",
+      "input": "free -m",
+      "output": "              total        used        free      shared  buff/cache   available\nMem:           7829        2143        3820         156        1865        5342\nSwap:          4095           0        4095"
+    },
+    {
+      "prompt": "$",
+      "input": "ip -br address show",
+      "output": "lo               UNKNOWN        127.0.0.1/8 ::1/128\neth0             UP             192.168.1.42/24 fe80::a00:27ff:fe4e:66a1/64"
+    },
+    {
+      "prompt": "$",
+      "input": "nmcli device status",
+      "output": "DEVICE  TYPE      STATE      CONNECTION\neth0    ethernet  connected  Wired connection 1\nlo      loopback  unmanaged  --"
+    },
+    {
+      "prompt": "$",
+      "input": "ss -tln",
+      "output": "State      Recv-Q Send-Q Local Address:Port Peer Address:Port\nLISTEN     0      128    0.0.0.0:22        0.0.0.0:*\nLISTEN     0      128    [::]:22           [::]:*"
+    },
+    {
+      "prompt": "$",
+      "input": "systemctl is-active ssh",
+      "output": "active"
+    },
+    {
+      "prompt": "$",
+      "input": "journalctl -u ssh -n 2",
+      "output": "May 14 08:42:17 nebula sshd[2214]: Accepted password for analyst from 192.168.1.55 port 51234 ssh2\nMay 14 08:45:03 nebula sudo[2351]:   analyst : TTY=pts/1 ; PWD=/home/analyst ; USER=root ; COMMAND=/usr/bin/apt update"
+    },
+    {
+      "prompt": "$",
+      "input": "crontab -l",
+      "output": "# Edit this file to introduce tasks to run by cron.\n0 3 * * * /home/analyst/scripts/backup.sh"
+    },
+    {
+      "prompt": "$",
+      "input": "ps -eo pid,cmd --sort=-%cpu | head -5",
+      "output": "  PID CMD\n 2154 /usr/bin/gnome-shell\n 2011 /usr/lib/firefox/firefox\n 1782 /usr/bin/python3 monitor.py\n 1650 /usr/lib/systemd/systemd --user\n    1 /sbin/init"
+    },
+    {
+      "prompt": "$",
+      "input": "env | sort | head -5",
+      "output": "COLORTERM=truecolor\nHOME=/home/analyst\nLANG=en_US.UTF-8\nLOGNAME=analyst\nPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    },
+    {
+      "prompt": "$",
+      "input": "python3 --version",
+      "output": "Python 3.10.12"
+    },
+    {
+      "prompt": "$",
+      "input": "which git",
+      "output": "/usr/bin/git"
+    },
+    {
+      "prompt": "$",
+      "input": "git --version",
+      "output": "git version 2.34.1"
+    }
+  ]
+}

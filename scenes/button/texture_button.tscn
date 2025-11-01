@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://usbhm5vmcsux"]
+
+[ext_resource type="Texture2D" uid="uid://dt1k3ydof6ura" path="res://assets/images/UI_Flat_FrameSlot01a.png" id="1_rgvab"]
+[ext_resource type="Texture2D" uid="uid://b23sivlxrdqt1" path="res://assets/images/UI_Flat_FrameSlot03a.png" id="2_glckv"]
+[ext_resource type="Script" uid="uid://eg82q510ogr1" path="res://scenes/button/texture_button.gd" id="3_glckv"]
+
+[node name="TextureButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_rgvab")
+texture_hover = ExtResource("2_glckv")
+stretch_mode = 3
+script = ExtResource("3_glckv")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b26cxd7h833hr"]
+
+[ext_resource type="Theme" uid="uid://bhjytml3sw14p" path="res://assets/theme/line.tres" id="1_tv307"]
+[ext_resource type="Script" uid="uid://chqme14mvrmpc" path="res://scenes/line/line.gd" id="2_tv307"]
+
+[node name="Line" type="RichTextLabel"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 22.0
+grow_horizontal = 2
+theme = ExtResource("1_tv307")
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+bbcode_enabled = true
+text = "$ "
+fit_content = true
+scroll_active = false
+autowrap_mode = 1
+tab_size = 2
+script = ExtResource("2_tv307")

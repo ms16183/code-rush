@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://8x7k1y2g1cgw"]
+
+[ext_resource type="Script" uid="uid://b0do7487m0nms" path="res://scenes/pre/pre.gd" id="1_jlmmq"]
+[ext_resource type="StyleBox" uid="uid://eikk8cuqnx34" path="res://assets/theme/window_sbt.stylebox" id="2_lei53"]
+[ext_resource type="Theme" uid="uid://nvxdixr5t7g7" path="res://assets/theme/text.tres" id="3_8x2uh"]
+
+[sub_resource type="Gradient" id="Gradient_8x2uh"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5389344, 0.65983605)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lei53"]
+gradient = SubResource("Gradient_8x2uh")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Pre" type="Control" node_paths=PackedStringArray("label", "progress")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jlmmq")
+label = NodePath("MC/PanelContainer/MC/VBoxContainer/Circle/Label")
+progress = NodePath("MC/PanelContainer/MC/VBoxContainer/Circle")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="PanelContainer" type="PanelContainer" parent="MC"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_lei53")
+
+[node name="MC" type="MarginContainer" parent="MC/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = -12
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC/PanelContainer/MC"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Circle" type="TextureProgressBar" parent="MC/PanelContainer/MC/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+fill_mode = 4
+nine_patch_stretch = true
+stretch_margin_left = 256
+stretch_margin_top = 256
+stretch_margin_right = 256
+stretch_margin_bottom = 256
+texture_progress = SubResource("GradientTexture2D_lei53")
+
+[node name="Label" type="Label" parent="MC/PanelContainer/MC/VBoxContainer/Circle"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -415.5
+offset_top = -85.0
+offset_right = 415.5
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme = ExtResource("3_8x2uh")
+theme_override_font_sizes/font_size = 128
+text = "3.0"
+horizontal_alignment = 1
+vertical_alignment = 1
